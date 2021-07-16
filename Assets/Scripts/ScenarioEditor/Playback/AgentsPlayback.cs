@@ -127,8 +127,8 @@ namespace Simulator.ScenarioEditor.Playback
 
                     var t = 1.0f - (pathArrivals[idx] - time) / (pathArrivals[idx] - pathArrivals[idx - 1]);
                     agent.TransformForPlayback.position = Vector3.Lerp(pathPositions[idx - 1], pathPositions[idx], t);
-                    agent.TransformForPlayback.rotation = Quaternion.LookRotation(
-                        (pathPositions[idx] - pathPositions[idx - 1]).normalized);
+                    //agent.TransformForPlayback.rotation = Quaternion.LookRotation(
+                        //(pathPositions[idx] - pathPositions[idx - 1]).normalized);
                 }
             }
         }
