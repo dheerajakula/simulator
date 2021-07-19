@@ -113,3 +113,9 @@ Please feel free to provide feedback or ask questions by creating a Github issue
 Copyright (c) 2019-2021 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.
+
+## Running our fork.
+1. Clone the repository: `git clone https://github.com/dheerajakula/simulator`. Make sure you have git LFS installed.
+2. Change the branch: `git checkout release-2021.1`
+3. Open the simulator directory with Unity Editor Version 2019.4.18f1
+4. To run the VSE editor scenarios make sure you have docker installed https://docs.docker.com/engine/install/ubuntu/. Make sure that you are able to run docker without sudo privelages follow these post installation instructions https://docs.docker.com/engine/install/linux-postinstall/.
