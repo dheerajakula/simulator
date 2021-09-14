@@ -80,15 +80,18 @@ public class NPCWaypointBehaviour : NPCBehaviourBase
     public override void OnAgentCollision(GameObject go)
     {
         // TODO
+        Debug.Log("collided");
+        FixedUpdateManager.StartCoroutine(NPCIdleIE(10,false));
     }
+
     #endregion
 
     #region init
     private void InitNPC()
     {
         Debug.Assert(LaneData != null);
-        rb.isKinematic = true;
-        controller.MainCollider.isTrigger = true;
+        //rb.isKinematic = true;
+        controller.MainCollider.isTrigger = false;
         controller.ResetLights();
         currentSpeed = 0f;
         rb.angularVelocity = Vector3.zero;

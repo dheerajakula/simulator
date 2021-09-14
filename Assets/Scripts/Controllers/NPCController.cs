@@ -215,6 +215,7 @@ public class NPCController : MonoBehaviour, ITriggerAgent, IMessageSender, IMess
             SimulatorManager.Instance.AnalysisManager.IncrementNPCCollision();
             if(_ActiveBehaviour) _ActiveBehaviour.OnAgentCollision(other.gameObject);
         }
+        Debug.Log("collided in on ");
     }
 
     private void OnDestroy()
@@ -897,6 +898,8 @@ public class NPCController : MonoBehaviour, ITriggerAgent, IMessageSender, IMess
             SimulatorManager.Instance.AnalysisManager.IncrementNPCCollision();
             ActiveBehaviour?.OnAgentCollision(collision.gameObject);
         }
+        Debug.Log("collided in on collision");
+
     }
 
     #region network

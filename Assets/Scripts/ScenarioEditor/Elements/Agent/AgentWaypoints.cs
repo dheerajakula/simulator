@@ -227,49 +227,49 @@ namespace Simulator.ScenarioEditor.Elements.Agents
                     ordinalNumber = waypointNode["ordinal_number"];
                 int index = ordinalNumber;
                 //TODO sort waypoints
-                //AddWaypoint(waypointInstance, index);
+                AddWaypoint(waypointInstance, index);
                 original_waypoints.Add(waypointInstance.transform.position);
-                //DeserializeTrigger(waypointInstance.LinkedTrigger, waypointNode["trigger"]);
+                DeserializeTrigger(waypointInstance.LinkedTrigger, waypointNode["trigger"]);
             }
-            smoothed_waypoints = Curver.MakeSmoothCurve(original_waypoints.ToArray(),smoothness);
+            //smoothed_waypoints = Curver.MakeSmoothCurve(original_waypoints.ToArray(),smoothness);
 
-            int original_waypoints_size = original_waypoints.Count;
-            int new_index = 0;
-            foreach (var waypointNode in waypointsNode.Children)
-            {
+            //int original_waypoints_size = original_waypoints.Count;
+            //int new_index = 0;
+            //foreach (var waypointNode in waypointsNode.Children)
+            //{
                 
-                //TODO sort waypoints
-                for (int i = 0; i < smoothness; i++)
-                {
-                    var mapWaypointPrefab =
-                    ScenarioManager.Instance.GetExtension<ScenarioWaypointsManager>().waypointPrefab;
-                    var waypointInstance = ScenarioManager.Instance.prefabsPools
-                        .GetInstance(mapWaypointPrefab).GetComponent<ScenarioWaypoint>();
-                    waypointInstance.transform.position = waypointNode["position"].ReadVector3();
+            //    //TODO sort waypoints
+            //    for (int i = 0; i < smoothness; i++)
+            //    {
+            //        var mapWaypointPrefab =
+            //        ScenarioManager.Instance.GetExtension<ScenarioWaypointsManager>().waypointPrefab;
+            //        var waypointInstance = ScenarioManager.Instance.prefabsPools
+            //            .GetInstance(mapWaypointPrefab).GetComponent<ScenarioWaypoint>();
+            //        waypointInstance.transform.position = waypointNode["position"].ReadVector3();
 
-                    var waitTime = waypointNode["waitTime"];
-                    if (waitTime == null)
-                        waitTime = waypointNode["wait_time"];
-                    waypointInstance.WaitTime = waitTime;
-                    waypointInstance.Speed = waypointNode["speed"];
+            //        var waitTime = waypointNode["waitTime"];
+            //        if (waitTime == null)
+            //            waitTime = waypointNode["wait_time"];
+            //        waypointInstance.WaitTime = waitTime;
+            //        waypointInstance.Speed = waypointNode["speed"];
 
-                    var ordinalNumber = waypointNode["ordinalNumber"];
-                    if (ordinalNumber == null)
-                        ordinalNumber = waypointNode["ordinal_number"];
-                    int index = ordinalNumber;
+            //        var ordinalNumber = waypointNode["ordinalNumber"];
+            //        if (ordinalNumber == null)
+            //            ordinalNumber = waypointNode["ordinal_number"];
+            //        int index = ordinalNumber;
 
-                    waypointInstance.transform.position = smoothed_waypoints[new_index];
+            //        waypointInstance.transform.position = smoothed_waypoints[new_index];
                
-                    AddWaypoint(waypointInstance, new_index);
+            //        AddWaypoint(waypointInstance, new_index);
                    
                     
-                    Debug.Log(waypointInstance.transform.position);
-                    new_index++;
-                    DeserializeTrigger(waypointInstance.LinkedTrigger, waypointNode["trigger"]);
-                }
+            //        Debug.Log(waypointInstance.transform.position);
+            //        new_index++;
+            //        DeserializeTrigger(waypointInstance.LinkedTrigger, waypointNode["trigger"]);
+            //    }
                 
                 
-            }
+            //}
 
             WaypointsParent.gameObject.SetActive(true);
             IsActiveChanged?.Invoke(true);
